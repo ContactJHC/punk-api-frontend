@@ -2,7 +2,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Beer from "./pages/Beer/Beer";
-// import NotFound from "./components/NotFound/NotFound"
+import NotFound from "./components/NotFound/NotFound"
 // import AboutUs from "./pages/AboutUs/AboutUs";
 import { Outlet } from "react-router-dom";
 
@@ -28,10 +28,10 @@ export const routes =
           //   path: "apropos",
           //   element: <AboutUs />,
           // },
-          // { 
-          //     path: "*", 
-          //     element: <NotFound /> 
-          // },
+          { 
+              path: "*", 
+              element: <NotFound /> 
+          },
         ],
       },
 ]
