@@ -1,7 +1,7 @@
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
-// import Beer from "./pages/Beer/Beer";
+import Beer from "./pages/Beer/Beer";
 // import NotFound from "./components/NotFound/NotFound"
 // import AboutUs from "./pages/AboutUs/AboutUs";
 import { Outlet } from "react-router-dom";
@@ -20,10 +20,10 @@ export const routes =
             path: "punk-api-frontend",
             element: <Home />,
           },
-          // {
-          //   path: "beer-card/:id",
-          //   element: <Beer />,
-          // },
+          {
+            path: "beer-card/:id",
+            element: <Beer />,
+          },
           // {
           //   path: "apropos",
           //   element: <AboutUs />,
