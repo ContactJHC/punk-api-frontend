@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/punk-api-frontend/static/css/main.366336fb.css",
+    "main.js": "/punk-api-frontend/static/js/main.283ca7f2.js",
+    "static/media/noBeerImgFound.png": "/punk-api-frontend/static/media/noBeerImgFound.01235ff9959da3626b55.png",
+    "static/media/coverBannerTwo.png": "/punk-api-frontend/static/media/coverBannerTwo.d63b77da0d6480b3c556.png",
+    "static/media/coverBanner.png": "/punk-api-frontend/static/media/coverBanner.52554621d445640ef300.png",
+    "static/media/logo.png": "/punk-api-frontend/static/media/logo.4c9bd42b43834e827c8c.png",
+    "index.html": "/punk-api-frontend/index.html",
+    "main.366336fb.css.map": "/punk-api-frontend/static/css/main.366336fb.css.map",
+    "main.283ca7f2.js.map": "/punk-api-frontend/static/js/main.283ca7f2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.366336fb.css",
+    "static/js/main.283ca7f2.js"
+  ]
+}
