@@ -1,0 +1,36 @@
+#NotFoundContainer{
+    color: #FF6060;
+    text-align: center;
+
+}
+
+#nombreQuatreCentQuatre{
+    font-size: 288px;
+    font-weight: bold;
+    line-height: 0;
+    margin-top: 1em;
+}
+
+#texteDeNotFetch {
+    font-size: 36px;
+    margin-bottom: 5em;
+}
+
+#retourPageAccueil {
+    font-size: 18px;
+    color: #FF6060;
+
+}
+
+@media (max-width: 768px) {
+    #nombreQuatreCentQuatre{
+        font-size: 96px;
+        font-weight: bold;
+        margin-top: 200px;
+    }
+
+    #texteDeNotFetch {
+        font-size: 20px;
+        margin-top: -1em;
+    }
+}
