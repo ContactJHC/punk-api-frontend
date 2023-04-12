@@ -1,0 +1,40 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: auto;
+  }
+  
+  .loading-spinner {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 8px solid #9356DC;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spinnerExt 1.5s linear infinite;
+  }
+  
+  .loading div:nth-child(2) {
+    width: 80%;
+    height: 80%;
+    border: 8px solid #FF79DA;
+    border-bottom-color: transparent;
+    animation: spinnerInt 1.5s linear infinite;
+  }
+  
+  @keyframes spinnerExt {
+    0% {transform: rotate(0deg); width: 100%; height: 100%}
+    50% {transform: rotate(-180deg); width: 50%; height: 50%}
+    100% {transform: rotate(-360deg); width: 100%; height: 100%}
+  }
+  
+  @keyframes spinnerInt {
+    0% {transform: rotate(0deg); width: 80%; height: 80%}
+    50% {transform: rotate(180deg); width: 40%; height: 40%}
+    100% {transform: rotate(360deg); width: 80%; height: 80%}
+  }
