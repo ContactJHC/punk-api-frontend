@@ -1,0 +1,85 @@
+.buttonsContainer {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.searchButton {
+    color: white;
+    background-color: #FF6060;
+    line-height: 1.5em;
+    border-radius: 5px;
+    font-size: 1em;
+    position: relative;
+    width: 25%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.searchButton:hover {
+    cursor: pointer;
+}
+
+#cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f6f6f6;
+    border-radius: 25px;
+    margin: auto;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    background: rgb(255,96,96);
+    background: linear-gradient(180deg, rgba(255,96,96,1) 0%, rgba(106,10,10,1) 100%);
+    position: relative;
+    margin: 20px;
+}
+
+.card p {
+    width: 80%;
+    position: absolute;
+    bottom: 0.2em;
+    left: 1em;
+    color: white;
+    font-size: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.coverPicture{
+    width: calc(100% - 4px);
+    border: solid rgb(255,96,96) 2px;
+    border-radius: 10px;
+    height: 60%;
+    padding: 3% 0 ;
+    object-fit: contain;
+    background-color: rgba(106,10,10,0.8);
+}
+
+@media (max-width: 768px) {
+    .buttonsContainer {
+        flex-direction: column;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    #cardsContainer{
+        background-color: white;
+    }
+
+    .card {
+        width: 100%;
+        height: 200px;
+        margin: 20px 0 0 0;
+        font-size: 0.7em;
+    }
+
+}
