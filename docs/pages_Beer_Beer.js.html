@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pages/Beer/Beer.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AboutUs">AboutUs</a></li><li><a href="global.html#Banner">Banner</a></li><li><a href="global.html#Beer">Beer</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LiElement">LiElement</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Spinner">Spinner</a></li><li><a href="global.html#UnfoldingText">UnfoldingText</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/Beer/Beer.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import './Beer.css'
+import UnfoldingText from '../../components/UnfoldingText/UnfoldingText'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState} from 'react'
+import { fetchOneBeerData } from '../../services/services'
+import Spinner from '../../components/Spinner/Spinner'
+import noBeer from '../../assets/noBeerImgFound.png'
+import LiElement from '../../components/LiElement/LiElement'
+
+/**
+ * Returns the page corresponding to the detailed description of a beer thanks 
+ * to its id retrieved from the URL: an image of the beer, its chemical 
+ * characteristics and specific properties.
+ * @returns {React.ReactElement} The presentation page of the beer whose ID is retrieved from the URL.
+ */
+
+function Beer() {
+    const identifiant = useParams()
+    const navigate = useNavigate()
+    const [oneBeerData, setOneBeerData] = useState({})
+    const [loading, setLoading] = useState(false)
+
+    // Fetching of all the data of the beer that we want to display.
+    useEffect(
+        () => {
+            const oneBeerId = identifiant.id
+            async function getTheData() {
+                setLoading(true)
+                const theData = await fetchOneBeerData(oneBeerId)
+                if (theData === undefined || oneBeerData.length === 0) {
+                    navigate('/404')
+    
+                } else {
+                    setOneBeerData(theData[0])
+                    setLoading(false)
+                }
+            }
+            getTheData()
+        }, [])
+    
+    return ( 
+    (loading) ? (&lt;div>&lt;Spinner />&lt;/div>) : (
+        &lt;>
+            &lt;div id='headerContainer'>
+                &lt;div id='nameAndTagline'>
+                    &lt;div id='name'>
+                        {oneBeerData.name}
+                    &lt;/div>
+                    &lt;div id='tagline'>
+                        {oneBeerData.tagline}
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            &lt;section id='imageContainer'>
+                &lt;div className='mobileImageContainer'>
+                {/* In case the image corresponding to the beer is 
+                missing in the API, we display an image of beer stored in 'assets'. */}
+                {oneBeerData.image_url ? (
+                    &lt;img id='image' src={oneBeerData.image_url} alt={`${oneBeerData.name}`} />
+                ) : (
+                    &lt;img id='image' src={noBeer} alt='Bourbon Baby' />
+                )}
+                &lt;/div>
+                &lt;div id='specsContainer' >
+                    &lt;ul>
+                        &lt;LiElement type='First brewed' content={oneBeerData.first_brewed} />
+                        &lt;LiElement type='ABV' content={oneBeerData.abv} />
+                        &lt;LiElement type='EBC' content={oneBeerData.ebc} />
+                        &lt;LiElement type='IBU' content={oneBeerData.ibu} />
+                        &lt;LiElement type='SRM' content={oneBeerData.srm} />
+                        &lt;LiElement type='PH' content={oneBeerData.ph} />
+                        {/* The food pairing key/attribute is not necessarily present in the recipes: 
+                            if yes, it is an array on which we iterate to display the elements.  */}
+                        {oneBeerData.food_pairing &amp;&amp; 
+                            (&lt;LiElement 
+                                type='Food pairing' 
+                                content={
+                                    &lt;ul>
+                                        {oneBeerData.food_pairing.map((food, index) =>
+                                            &lt;li key={`${food}${index}`}>{food}&lt;/li>
+                                        )}
+                                    &lt;/ul>} 
+                            />)
+                        }
+                    &lt;/ul>
+                &lt;/div>
+            &lt;/section>
+            &lt;div id='containerDescription'>
+                &lt;div id='containerOne'>
+                    &lt;UnfoldingText contentObject={
+                        {
+                            title : 'Description',
+                            content : oneBeerData.description
+                        }
+                    } />
+                &lt;/div>
+                &lt;div id='containerTwo'>
+                    &lt;UnfoldingText 
+                        contentObject={
+                            {
+                                title: 'Tips',
+                                content : oneBeerData.brewers_tips
+                            }
+                    } /> 
+                &lt;/div>
+            &lt;/div>            
+        &lt;/>
+    ))
+}
+
+export default Beer</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Wed Apr 12 2023 09:30:14 GMT+0200 (heure d’été d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
