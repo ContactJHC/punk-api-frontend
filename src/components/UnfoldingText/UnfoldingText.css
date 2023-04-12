@@ -1,0 +1,96 @@
+.unfoldingContainer{
+    width: 80%;
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+}
+
+.unfoldingTitle {
+    color: white;
+    background-color: #FF6060;
+    padding-left: 0.5em;
+    line-height: 1.5em;
+    border-radius: 5px;
+    font-size: 24px;
+    position: relative;
+}
+
+.unfoldingDescription {
+    color: #FF6060;
+    background-color: #F6F6F6;
+    font-size: 18px;
+    margin-top: -3px;
+    padding: 6px 0 1em 0.5em;
+}
+
+.unfoldingContainer p {
+    margin: 0;
+}
+
+
+.vector {
+    position: absolute;
+    z-index: 1;
+    right: 1em;
+    cursor: pointer;
+}
+
+.vUp {
+    top: 10px;
+}
+
+.vDown {
+    top: 4px;
+}
+
+.enabled {
+    display: block;
+}
+
+.disabled {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .unfoldingTitle {
+        line-height: 2em;
+        font-size: 0.8em;
+    }
+
+    .unfoldingDescription {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .unfoldingTitle {
+        line-height: 2em;
+        font-size: 0.7em;
+    }
+
+    .unfoldingDescription{
+        font-size: 0.6em;
+    }
+
+    .unfoldingContainer{
+        width: 100%;
+    }
+}
+
+@media (max-width: 514px) {
+
+    .unfoldingTitle {
+        line-height: 2em;
+        font-size: 0.6em;
+    }
+
+    .unfoldingDescription{
+        font-size: 0.5em;
+    }
+
+    .vUp, .vDown {
+        display: none;
+    }
+
+}
